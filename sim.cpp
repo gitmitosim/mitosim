@@ -62,7 +62,14 @@ void PrintHelp()
 	cout << "The diffusion constants reflect the values for a three-axis simulation, while\nrunning with a one-axis simulation effectively results in constants that are\n1/3 of the values given. Use -b 1 for one-axis and -b 3 for three-axis\nsimulations (other input values not possible). Difussion constants need to be\nwritten in their full format, for example: 0.0000000037.\n\n";
 	cout << "Input files:\n";
 	cout << "------------\n";
-	cout << "The number of entries in the gene information file should be the same as the\ntranslation initiation times file. Note: the gene information file has a header\nwhile the initiation times file doesn't (see geneinfo.csv and inittimes.csv).\n";
+	cout << "The number of entries in the gene information file should be the same as the\ntranslation initiation times file. Note: the gene information file has a header\nwhile the initiation times file doesn't (see geneinfo.csv and inittimes.csv).\n\n";
+	cout << "Output files:\n";
+	cout << "-------------\n";
+	cout << "The simulation outputs three files. For example, if the output file is named\nmysim, then mysim, mysim_mlrs, mysim_info will be created which contain:\n\n";
+	cout << "mysim: simulated mlr values + information such as the amino acid length.\n";
+	cout << "mysim_info: information such as the ratio of entrapped mRNAs.\n";
+	cout << "mysim_mlrs: only the simulated mlr values.\n\n";	
+	cout << "If -r is greater than 1, then each output file will be enumerated.\n";
 	
 	cout << "\n";
 }
@@ -723,8 +730,7 @@ double Dnotrans, double Dtrans, int nSimulationAxis, int nTotalMito, double dTot
 		stdev = sqrt(stdev/(double)(ncount-1));
 
 		foutinfo << "\n";
-		foutinfo << "Ration entraped = " << dEntraped << "\n\n";
-	
+		foutinfo << "Ratio entraped = " << dEntraped << "\n";	
 		foutinfo << "Avgmlr = " << davgmlr << "\n";
 		foutinfo << "Stdmlr = " << stdev << "\n";
 		foutinfo << "Minmlr = " << dMin << "\n";
